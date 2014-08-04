@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E64D1A6A-A660-43DD-84E1-081ACEE7BF9F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ApplicationListDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7A9DEEDA-6B60-43EC-84A1-BCFE4FD29846</key>
+		<string>https://github.com/heavensword/ApplicationList.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ApplicationListDemo.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7A9DEEDA-6B60-43EC-84A1-BCFE4FD29846</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/heavensword/ApplicationList.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7A9DEEDA-6B60-43EC-84A1-BCFE4FD29846</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7A9DEEDA-6B60-43EC-84A1-BCFE4FD29846</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ApplicationList</string>
+		</dict>
+	</array>
+</dict>
+</plist>
