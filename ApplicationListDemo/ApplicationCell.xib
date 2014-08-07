@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
     </dependencies>
     <objects>
@@ -13,33 +14,40 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6hF-dn-Uk7" userLabel="selected background view">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <color key="backgroundColor" red="0.88313670040000003" green="1" blue="0.75254804180000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiq-UW-ThT">
-                        <rect key="frame" x="89" y="5" width="231" height="28"/>
+                        <rect key="frame" x="89" y="5" width="226" height="28"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IZI-rV-Oai">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IZI-rV-Oai">
                         <rect key="frame" x="7" y="10" width="60" height="59"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="671-xt-CeU"/>
                             <constraint firstAttribute="height" constant="59" id="YUA-wW-qLd"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="231" translatesAutoresizingMaskIntoConstraints="NO" id="QI2-Mn-2bG">
-                        <rect key="frame" x="89" y="38" width="231" height="41"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="226" translatesAutoresizingMaskIntoConstraints="NO" id="QI2-Mn-2bG">
+                        <rect key="frame" x="89" y="38" width="226" height="41"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="QI2-Mn-2bG" secondAttribute="trailing" id="2af-dF-2En"/>
+                    <constraint firstAttribute="trailing" secondItem="QI2-Mn-2bG" secondAttribute="trailing" constant="5" id="2af-dF-2En"/>
                     <constraint firstItem="uiq-UW-ThT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Bdh-aL-keo"/>
                     <constraint firstAttribute="bottom" secondItem="QI2-Mn-2bG" secondAttribute="bottom" constant="-0.5" id="Efd-pl-iGX"/>
+                    <constraint firstAttribute="trailing" secondItem="uiq-UW-ThT" secondAttribute="trailing" constant="5" id="IOF-Bs-GRB"/>
+                    <constraint firstItem="QI2-Mn-2bG" firstAttribute="leading" secondItem="IZI-rV-Oai" secondAttribute="trailing" constant="22" id="WoD-4t-Z6G"/>
+                    <constraint firstItem="QI2-Mn-2bG" firstAttribute="top" secondItem="uiq-UW-ThT" secondAttribute="bottom" priority="900" id="XNZ-jP-AQT"/>
+                    <constraint firstItem="uiq-UW-ThT" firstAttribute="leading" secondItem="IZI-rV-Oai" secondAttribute="trailing" constant="22" id="feH-Ks-caj"/>
                     <constraint firstAttribute="centerY" secondItem="IZI-rV-Oai" secondAttribute="centerY" id="h2H-R9-90K"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QI2-Mn-2bG" secondAttribute="bottom" constant="0.5" id="jy5-i2-Pg9"/>
-                    <constraint firstAttribute="trailing" secondItem="uiq-UW-ThT" secondAttribute="trailing" id="lm3-0R-aa5"/>
                     <constraint firstItem="QI2-Mn-2bG" firstAttribute="top" secondItem="uiq-UW-ThT" secondAttribute="bottom" constant="11" id="myP-hm-rqJ"/>
                     <constraint firstItem="uiq-UW-ThT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="89" id="scb-ON-ceL"/>
                 </constraints>
@@ -48,6 +56,7 @@
                 <outlet property="detailLabel" destination="QI2-Mn-2bG" id="qA9-Pt-Ucu"/>
                 <outlet property="iconImageView" destination="IZI-rV-Oai" id="MIW-7C-lce"/>
                 <outlet property="nameLabel" destination="uiq-UW-ThT" id="mx7-GF-iiY"/>
+                <outlet property="selectedBackgroundView" destination="6hF-dn-Uk7" id="9EX-AF-aBI"/>
             </connections>
             <point key="canvasLocation" x="14" y="173"/>
         </tableViewCell>

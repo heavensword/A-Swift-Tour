@@ -9,6 +9,7 @@
 import UIKit
 
 class Application: NSObject {
+    var bundleId:NSString?
     var icon:NSString?
     var name:NSString?
     var desc:NSString?    

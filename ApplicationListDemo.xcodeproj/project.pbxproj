@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5007CC611990D35400F0262A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5007CC601990D35400F0262A /* StoreKit.framework */; };
 		503A756C198F716B00718F13 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 503A756B198F716B00718F13 /* icon@2x.png */; };
 		504616F5198E80EE0034C554 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504616F4198E80EE0034C554 /* AppDelegate.swift */; };
 		504616F7198E80EE0034C554 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504616F6198E80EE0034C554 /* MasterViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5007CC601990D35400F0262A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		503A7566198F3C9800718F13 /* ApplicationListDemo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ApplicationListDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		503A756B198F716B00718F13 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		504616EF198E80EE0034C554 /* ApplicationListDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApplicationListDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5007CC611990D35400F0262A /* StoreKit.framework in Frameworks */,
 				E4CF2C7991AA4EEFAEBED2F5 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +146,7 @@
 		CE0F4992465448BCACF5D25B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5007CC601990D35400F0262A /* StoreKit.framework */,
 				ABCAB2C017FD4CAABEAE9779 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -405,11 +409,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Lee (94JG5K3RP2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Lee (94JG5K3RP2)";
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = ApplicationListDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7987D9BD-97CD-4598-8DB9-BCECDC4F03B6";
 				SWIFT_OBJC_BRIDGING_HEADER = "ApplicationListDemo/ApplicationListDemo-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -421,9 +430,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = ApplicationListDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ApplicationListDemo/ApplicationListDemo-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

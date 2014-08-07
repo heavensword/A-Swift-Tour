@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import StoreKit
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, SKStoreProductViewControllerDelegate {
 
     var applications = NSMutableArray()
 
+    @IBOutlet var indicatorView: UIActivityIndicatorView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,12 +26,13 @@ class MasterViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.refreshControl = UIRefreshControl();
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView.addSubview(self.refreshControl)
+//        self.tableView.addSubview(self.refreshControl)
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.refreshControl.beginRefreshing()
+        showLoading()
         loadApplications()
     }
     
@@ -65,7 +68,7 @@ class MasterViewController: UITableViewController {
         var cellHeight:CGFloat = 50;
         
         var attributes:NSDictionary = [NSFontAttributeName:UIFont.systemFontOfSize(13)]
-        var boundingRect:CGRect = application?.desc?.boundingRectWithSize(CGSizeMake(231, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: attributes, context: nil) as CGRect
+        var boundingRect:CGRect = application?.desc?.boundingRectWithSize(CGSizeMake(226, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: attributes, context: nil) as CGRect
         cellHeight += boundingRect.size.height
 
         if cellHeight <= fixedHeight {
@@ -87,12 +90,37 @@ class MasterViewController: UITableViewController {
         return true
     }
 
+    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        NSLog("didSelectRowAtIndexPath")        
+        if NSClassFromString("SKStoreProductViewController") {
+            self.showLoading()
+            var application:Application = self.applications[indexPath.row] as Application
+            var bunldId:NSString = application.bundleId!
+            let productViewController:SKStoreProductViewController = SKStoreProductViewController()
+            productViewController.delegate = self
+            productViewController.loadProductWithParameters([SKStoreProductParameterITunesItemIdentifier: bunldId], completionBlock:
+                {(result:Bool, error:NSError!) -> Void in
+                    self.hideLoading()
+                    if result {
+                        self.presentViewController(productViewController, animated: true, completion: nil)
+                    }
+                }
+            )
+        }
+    }
+    
+    func productViewControllerDidFinish(viewController: SKStoreProductViewController!) {
+        self.hideLoading()
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func loadApplications(){
         var url = NSURL.URLWithString("https://itunes.apple.com/search?term=qq&country=cn&entity=software")
         var request:NSURLRequest = NSURLRequest(URL: url)        
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{
             ( response:NSURLResponse!,  data:NSData!, error:NSError!) -> Void in
+                self.hideLoading()
                 if data {
                     self.applications.removeAllObjects()
                     var jsonObject:NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: nil) as NSDictionary
@@ -102,7 +130,7 @@ class MasterViewController: UITableViewController {
                         application.name = applicationDic["trackName"] as? NSString
                         application.icon = applicationDic["artworkUrl512"] as? NSString
                         application.desc = applicationDic["description"] as? NSString
-                        
+                        application.bundleId = (applicationDic["trackId"] as? NSNumber)?.stringValue
                         self.applications.addObject(application)
                     }
                     self.tableView.reloadData()
@@ -112,6 +140,26 @@ class MasterViewController: UITableViewController {
         
     }
 
+    func showLoading() {
+        if !self.indicatorView.superview {
+            self.indicatorView.center = UIApplication.sharedApplication().keyWindow.center
+            UIApplication.sharedApplication().keyWindow.addSubview(self.indicatorView)
+        }
+        self.indicatorView.alpha = 1.0;
+        self.indicatorView.hidden = false
+        self.indicatorView.startAnimating()
+    }
+    
+    func hideLoading() {
+        UIView.animateWithDuration(0.3, animations:{ () -> Void in
+            self.indicatorView.alpha = 0.0
+            }, completion: {(finished:Bool) -> Void in
+                if finished {
+                    self.hideLoading()
+                }
+            })
+    }
+    
     func refresh(sender:AnyObject!){
         NSLog("refresh")
         self.loadApplications()
