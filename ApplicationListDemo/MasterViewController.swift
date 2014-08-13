@@ -63,12 +63,12 @@ class MasterViewController: UITableViewController, SKStoreProductViewControllerD
     }
     
     override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
-        let application = applications[indexPath.row] as? Application;
+        let application:Application = applications[indexPath.row] as Application!;
         let fixedHeight:CGFloat = 60.0
         var cellHeight:CGFloat = 50;
         
         var attributes:NSDictionary = [NSFontAttributeName:UIFont.systemFontOfSize(13)]
-        var boundingRect:CGRect = application?.desc?.boundingRectWithSize(CGSizeMake(226, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: attributes, context: nil) as CGRect
+        var boundingRect:CGRect = application.desc!.boundingRectWithSize(CGSizeMake(226, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: attributes, context: nil)
         cellHeight += boundingRect.size.height
 
         if cellHeight <= fixedHeight {
@@ -87,12 +87,14 @@ class MasterViewController: UITableViewController, SKStoreProductViewControllerD
 
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
+        var scrollView:UIScrollView = UIScrollView()
+        scrollView.delegate?.scrollViewDidScroll?(scrollView)
         return true
     }
 
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         NSLog("didSelectRowAtIndexPath")        
-        if NSClassFromString("SKStoreProductViewController") {
+        if (NSClassFromString("SKStoreProductViewController") != nil) {
             self.showLoading()
             var application:Application = self.applications[indexPath.row] as Application
             var bunldId:NSString = application.bundleId!
@@ -121,7 +123,7 @@ class MasterViewController: UITableViewController, SKStoreProductViewControllerD
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{
             ( response:NSURLResponse!,  data:NSData!, error:NSError!) -> Void in
                 self.hideLoading()
-                if data {
+                if (data != nil) {
                     self.applications.removeAllObjects()
                     var jsonObject:NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: nil) as NSDictionary
                     var applicationDicArray:NSArray = jsonObject["results"]? as NSArray
@@ -141,7 +143,7 @@ class MasterViewController: UITableViewController, SKStoreProductViewControllerD
     }
 
     func showLoading() {
-        if !self.indicatorView.superview {
+        if self.indicatorView.superview != nil {
             self.indicatorView.center = UIApplication.sharedApplication().keyWindow.center
             UIApplication.sharedApplication().keyWindow.addSubview(self.indicatorView)
         }

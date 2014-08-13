@@ -26,11 +26,8 @@ class ApplicationCell: UITableViewCell {
         self.nameLabel.text = self.application?.name
         self.detailLabel.text = self.application?.desc
         var icon = self.application?.icon
-        if icon {
-            NSLog(icon!)
-        }
         let url:NSURL? = NSURL.URLWithString(self.application?.icon)
-        if url {
+        if (url != nil) {
             self.iconImageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "icon"))
         }
     }

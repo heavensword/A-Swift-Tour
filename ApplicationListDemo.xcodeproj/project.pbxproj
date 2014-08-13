@@ -407,6 +407,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB068AE809E04A1AB9C3DF4D /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Lee (94JG5K3RP2)";
@@ -415,10 +416,12 @@
 				INFOPLIST_FILE = ApplicationListDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7987D9BD-97CD-4598-8DB9-BCECDC4F03B6";
 				SWIFT_OBJC_BRIDGING_HEADER = "ApplicationListDemo/ApplicationListDemo-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv64";
 			};
 			name = Debug;
 		};
@@ -426,6 +429,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB068AE809E04A1AB9C3DF4D /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEFINES_MODULE = YES;
@@ -435,6 +439,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ApplicationListDemo/ApplicationListDemo-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv64";
 			};
 			name = Release;
 		};

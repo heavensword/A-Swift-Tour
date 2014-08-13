@@ -13,9 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
     
+    func myFloat(value:CGFloat) {
+        println(value)
+    }
+    
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         let a:Int = 10
         var reminder:Int = a/3.0
+        self.myFloat(12)
         // Override point for customization after application launch.
         return true
     }
